@@ -14,6 +14,22 @@ func LetterFrequencies(word string) {
 	}
 }
 
+func WhatHappend() {
+	var m map[string]int
+	defer func() {
+		if r := recover(); r != nil {
+			fmt.Println("Recovered from panic:", r)
+		}
+	}()
+
+	val := m["key"] // safe
+	fmt.Printf("I read from nil map:  %d\n", val)
+
+	m["key"] = 1
+}
+
 func main() {
 	LetterFrequencies("aabbc")
+
+	WhatHappend()
 }
